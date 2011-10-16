@@ -1,31 +1,22 @@
 <?php
+
 function grab_url($url) {
-    $c = curl_init();
-    curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
-    curl_setopt( $c, CURLOPT_URL, $url );
-  
-    // 500ms timeout - should be quick enough, tests show around 300ms-450ms
-    curl_setopt( $c, CURLOPT_CONNECTTIMEOUT_MS, 500 ); 
-
-    // 1 second timeout for the entire transaction
-    curl_setopt( $c, CURLOPT_TIMEOUT, 1 );
-  
-
-    $res = curl_exec( $c );
-  
-    return $res ? $res : '';
+    
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	$output = curl_exec($ch);
+	curl_close($ch);
+	return $output;
 }
 
 function grab_and_store($user, $db) {
-    include('twitter_auth.php');
-    if (!@$twitter_auth) {
-        $twitter_auth = '';
-    }
 
-    $user_profile = json_decode(grab_url('http://' . $twitter_auth . 'twitter.com/users/' . $user . '.json'));
+    $user_profile = json_decode(grab_url('http://api.twitter.com/1/users/show.json?screen_name=' . $user));
     
     if (!$user_profile) {
-        return "http://static.twitter.com/images/default_profile_bigger.png";
+        return "http://a0.twimg.com/sticky/default_profile_images/default_profile_1_bigger.png";
     } else {
         $image_url = $user_profile->profile_image_url;
         
@@ -85,7 +76,7 @@ $use_db = false;
 if ($user) {
     // use in case of emergencies: skips twitter entirly
     if (false) {
-        redirect("http://static.twitter.com/images/default_profile_bigger.png", $size, false);
+        redirect("http://a0.twimg.com/sticky/default_profile_images/default_profile_1_bigger.png", $size, false);
         exit;
     }
 
