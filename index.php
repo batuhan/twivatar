@@ -109,108 +109,118 @@ if ($user) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset=utf-8 />
-<title>Twivatar - Twitter Avatar API</title>
-<style>
-body { 
-    font: normal 16px/20px Helvetica, sans-serif;
-    background: rgb(237, 237, 236);
-    margin: 0;
-    margin-top: 40px;
-    padding: 0;
-}
+<html>
+  <head>
+    <title>Twivatar - Twitter Avatar API</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+    <style>
+		body {
+		  padding-top: 50px; /* 40px to make the container go all the way to the bottom of the topbar */
+		}
 
-section, header, footer {
-    display: block;
-}
+		.container {
+		  width: 600px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+		}
 
+		/* The white background content wrapper */
+		.content {
+		  background-color: #fff;
+		  padding: 20px;
+		  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+		  -webkit-border-radius: 0 0 6px 6px;
+		     -moz-border-radius: 0 0 6px 6px;
+		          border-radius: 0 0 6px 6px;
+		  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+		     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+		          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+		}
+		.modal {
+		  position: absolute;
+		}
+	</style>
+  </head>
+  
+  <body>
+	
+	<a href="http://github.com/batuhanicoz/twivatar"><img style="position: absolute; top: 30px; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+		
+	<div class="topbar">
+      <div class="fill">
+        <div class="container">
+		  <h3><a href="http://twivatar.herokuapp.com">Twivatar</a></h3>
+        </div>
+      </div>
+    </div>
 
-#wrapper {
-    width: 600px;
-    margin: 0 auto;
-    background: #fff url(images/shade.jpg) repeat-x center bottom;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-top: 1px solid #fff;
-    padding-bottom: 76px;
-}
+	<div class="container">
+		
+		<section id="content">
 
-h1 {
-    padding-top: 10px;
-}
+		  <div class="row">
+		  	<div class="span10">
+				<div class="page-header">
+		        	<h1>Twitter Avatar API</h1>
+				</div>
+				
+					<h4>What is it?</h4>
 
-h2 {
-    font-size: 100%;
-    font-style: italic;
-}
+					<p>Twivatar is a RESTful API to a Twitter user's avatar built out of frustration of external Twitter apps breaking when the avatar url is stored, and then changed by that user later on Twitter - the result is a broken image on that app unless they constantly check for profile changes.</p>
+					<p>All the code is available on <a href="https://github.com/batuhanicoz/twivatar/">GitHub</a>, so feel free to fork and contribute.</p>
 
-header,
-article > p,
-article > h3,
-article > code,
-footer a {
-    margin: 20px;
-}
+					<h4>Usage</h4>
+					<p><code>&lt;img src="http://twivatar.herokuapp.com/[<em>screen_name</em>]" /&gt;</code></p>
 
-footer a {
-    margin: 20px;
-    color: #999;
-}
+					<p>Alternatively you can specify the size image you want from:</p>
+					<ul>
+						<li>mini (24x24)</li>
+			            <li>normal (48x48 - default)</li>
+			            <li>bigger (73x73)</li>
+			            <li>original</li>
+			        </ul>
 
-footer a:hover:after {
-    content: '...quickly';
-}
+					<p><code>&lt;img src="http://twivatar.herokuapp.com/[<em>screen_name</em>]/[<em>size</em>]" /&gt;</code></p>
+					<p>Also, if you need it, you can use HTTPS: </p>
+					<p><code>&lt;img src="http<strong>s</strong>://twivatar.herokuapp.com/[<em>screen_name</em>]" /&gt;</code>
+					(or <code>&lt;img src="http<strong>s</strong>://twivatar.herokuapp.com/[<em>screen_name</em>]/[<em>size</em>]" /&gt;</code>)
+					</p>
 
-</style>
-<!--[if IE]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-</head>
-<body>
-<section id="wrapper">
-    <header>
-        <h1>Twivatar</h1>
-        <h2>Twitter Avatar API</h2>            
-    </header>
-    <article>
-        <p>Twivatar is a <a href="http://en.wikipedia.org/wiki/REST" title="Rest - Wikipedia, the free encyclopedia">RESTful</a> API to a Twitter user's avatar built out of frustration of external Twitter apps breaking when the avatar url is stored, and then changed by that user later on Twitter - the result is a broken image on that app unless they constantly check for profile changes.</p>
+				</div>
+		</div>
+		
+		
+		</section>
 
-        <h3>Usage</h3>
-        <code>&lt;img src="http://twivatar.org/[<em>screen_name</em>]" /&gt;</code>
-        
-        <p>Alternatively you can specify the size image you want from:</p>
-        <ul>
-            <li>mini (24x24)</li>
-            <li>normal (48x48 - default)</li>
-            <li>bigger (73x73)</li>
-            <li>original</li>
-        </ul>
-        <code>&lt;img src="http://twivatar.org/[<em>screen_name</em>]/[<em>size</em>]" /&gt;</code>
+		
+	    <footer class="footer">
+	      <div class="container">
+	        <p class="pull-right">
+				<a href="https://github.com/batuhanicoz/twivatar">Source code on Github</a></p>
+	        <p>
+				Twivatar is a fork of <a href="https://twitter.com/rem">@rem</a>'s twivatar.org (<a href="https://github.com/remy/twivatar">on github</a>) by <a href="https://twitter.com/batuhanicoz">@batuhanicoz</a>.
+	        </p>
+	      </div>
+	    </footer>
+		
+    </div>
+	
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+	
+	<script src="js/google-code-prettify/prettify.js"></script>
+	<script>$(function () { prettyPrint() })</script>
+	
+	<script type="text/javascript">
 
-        <h3>Behind the scenes</h3>
-        <p>This is a simple one script app that stores the url of the avatar. When the avatar is requested for <em>x</em> user, it runs the following logic:</p>
-        <ol>
-            <li>Get the stored avatar url</li>
-            <li>If there's no record, go to Twitter and pull the profile_image_url</li>
-            <li>If a record is found, perform a <a href="http://en.wikipedia.org/wiki/HTTP%23Request_methods" title="Wikipedia Entry: HTTP#Request methods">HEAD</a> request to test the avatar url</li>
-            <li>Finally use a <code>location</code> redirect to the avatar url</li>
-        </ol>
-        <p>All the code is available on <a href="http://github.com/remy/twivatar/">GitHub</a>, so feel free to fork and contribute.</p>
-        <h3>Todo</h3>
-        <p>I'd like to upgrade the entire app to read the ETags from S3 (or some kind of cache control), and send them back to the client, so that the browser uses it's local cache if the avatar is available and up to date.</p>
-    </article>
-    <footer><a href="http://twitter.com/rem">@rem built this</a></footer>
-</section>
-<script>
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script>
-try {
-var pageTracker = _gat._getTracker("UA-1656750-17");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</body>
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-11142497-11']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  </body>
 </html>

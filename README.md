@@ -4,7 +4,7 @@ Twivatar is a RESTful API to a Twitter user's avatar built out of frustration of
 
 ## Usage
 
-`<img src="http://twivatar.org/[screen_name]" />`
+`<img src="http://twivatar.herokuapp.com/[screen_name]" />`
 
 Alternatively you can specify the size image you want from:
 
@@ -13,4 +13,16 @@ Alternatively you can specify the size image you want from:
 * bigger (73x73)
 * original
 
-`<img src="http://twivatar.org/[screen_name]/[size]" />`
+`<img src="http://twivatar.herokuapp.com/[screen_name]/[size]" />`
+
+Also, if you need it, you can use HTTPS:
+
+`<img src="https://twivatar.herokuapp.com/[screen_name]" />`
+
+or
+
+`<img src="https://twivatar.herokuapp.com/[screen_name]/[size]" />`
+
+## License
+
+MIT: http://rem.mit-license.org

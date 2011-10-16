@@ -4,8 +4,8 @@ RewriteEngine On
 RewriteBase /
 
 # no-www.org
-RewriteCond %{HTTP_HOST} ^www\.twivatar\.org$ [NC]
-RewriteRule ^(.*)$ http://twivatar.org/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.twivatar\.herokuapp\.com$ [NC]
+RewriteRule ^(.*)$ http://twivatar.herokuapp.com/$1 [R=301,L]
 
 # if the file or directory does exist
 RewriteCond %{REQUEST_FILENAME} -d [OR]
