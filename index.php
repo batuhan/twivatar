@@ -113,21 +113,20 @@ if ($user) {
   <head>
     <title>Twivatar - Twitter Avatar API</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
     <style>
 		body {
-		  padding-top: 50px; /* 40px to make the container go all the way to the bottom of the topbar */
+		  padding-top: 50px;
 		}
 
 		.container {
-		  width: 600px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+		  width: 600px;
 		}
 
-		/* The white background content wrapper */
 		.content {
 		  background-color: #fff;
 		  padding: 20px;
-		  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+		  margin: 0 -20px; 
 		  -webkit-border-radius: 0 0 6px 6px;
 		     -moz-border-radius: 0 0 6px 6px;
 		          border-radius: 0 0 6px 6px;
